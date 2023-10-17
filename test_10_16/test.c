@@ -31,29 +31,29 @@
 // bacdef
 // bafedc
 // cdefab
-void reverse(char* left, char* right)
-{
-	assert(left != NULL);
-	assert(right != NULL);
-	while (left < right)
-	{
-		char tmp = *left;
-		*left = *right;
-		*right = tmp;
-		left++;
-		right--;
-	}
-}
-
-void left_move(char* arr, int k)
-{
-	assert(arr);
-	int len = strlen(arr);
-	assert(k <= len);
-	reverse(arr, arr + k - 1); // 逆序左边
-	reverse(arr + k, arr + len - 1); // 逆序右边
-	reverse(arr, arr + len - 1); // 逆序整体
-}
+//void reverse(char* left, char* right)
+//{
+//	assert(left != NULL);
+//	assert(right != NULL);
+//	while (left < right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//
+//void left_move(char* arr, int k)
+//{
+//	assert(arr);
+//	int len = strlen(arr);
+//	assert(k <= len);
+//	reverse(arr, arr + k - 1); // 逆序左边
+//	reverse(arr + k, arr + len - 1); // 逆序右边
+//	reverse(arr, arr + len - 1); // 逆序整体
+//}
 
 //int main()
 //{
@@ -196,27 +196,182 @@ void left_move(char* arr, int k)
 //	return 0;
 //}
 
-char* my_strcpy(char* dest, const char* src)
-{
-	assert(dest != NULL);
-	assert(src != NULL);
-	char* ret = dest;
-	// 拷贝src指向的字符串到dest指向的空间，包含'\0'
-	while (*dest++ = *src++)
-	{
-		;
-	}
-	//目的空间的地址
-	return ret;
-}
+//char* my_strcpy(char* dest, const char* src)
+//{
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//	char* ret = dest;
+//	// 拷贝src指向的字符串到dest指向的空间，包含'\0'
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//	//目的空间的地址
+//	return ret;
+//}
+//
+//int main()
+//{
+//	char arr1[] = "abcdefgi";
+//	char arr2[] = "bit";
+//
+//	my_strcpy(arr1, arr2);
+//	printf("%s\n", arr1);
+//
+//	return 0;
+//}
+
+//char* my_strcat(char* dest, const char* src)
+//{
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//
+//	char* ret = dest;
+//	while (*dest != '\0')
+//	{
+//		dest++;
+//	}
+//	while (*dest++ = *src++)
+//	{	
+//		;
+//	}
+//	return ret;
+//}
+//
+//int main()
+//{
+//	char arr1[30] = "hello";
+//	char arr2[] = "world";
+//	my_strcat(arr1, arr2);
+//	printf("%s\n", arr1);
+//	return 0;
+//}
+
+//int my_strcmp(const char* str1, const char* str2)
+//{
+//	assert(str1 && str2);
+//	// cmp
+//	while (*str1 == *str2)
+//	{
+//		if (*str1 == '\0')
+//			return 0;
+//		str1++;
+//		str2++;
+//	}
+//	return *str1 - *str2;
+//}
+//
+//int main()
+//{
+//	char* p1 = "abcdef";
+//	char* p2 = "abcdef";
+//	int ret = my_strcmp(p1, p2);
+//	// vs2013
+//	// > 1
+//	// == 0
+//	// < -1
+//	// linux -gcc
+//	// > >0
+//	// == 0
+//	// < <0
+//	if (ret > 0)
+//	{
+//		printf("p1 > p2\n");
+//	}
+//	else if (ret == 0)
+//	{
+//		printf("p1 == p2\n");
+//	}
+//	else
+//	{
+//		printf("p1 < p2\n");
+//	}
+//	return 0;
+//}
+
+//char* my_strncpy(char* dest, const char* src, int count)
+//{
+//	char* start = dest;
+//	while (count && (*dest++ = *src++))
+//		count--;
+//	if (count)
+//		while (--count)
+//			*dest++ = '\0';
+//	return start;
+//}
+//
+//int main()
+//{
+//	char arr1[5] = "abc";
+//	char arr2[] = "h";
+//	my_strncpy(arr1, arr2, 2);
+//	printf("%s\n",arr1);
+//
+//	return 0;
+//}
+
+//char* my_strncat(char* front, const char* back, int count)
+//{
+//	char* start = front;;
+//	while (*front++);
+//	front--;
+//	while (count--)
+//		if (!(*front++ = *back++))
+//			return start;
+//	*front = '\0';
+//	return start;
+//}
+//
+//
+//int main()
+//{
+//	char arr1[30] = "hello";
+//	char arr2[] = "world";
+//	my_strncat(arr1, arr2, 3);
+//	printf("%s\n", arr1);
+//	return 0;
+//}
+
+//int main()
+//{
+//	const char* p1 = "abcdef";
+//	const char* p2 = "abcqwer";
+//	int ret = strncmp(p1, p2, 4);
+//	return 0;
+//}
+
+//char* my_strstr(const char* p1, const char* p2)
+//{
+//	assert(p1 != NULL);
+//	assert(p2 != NULL);
+//	if (*p2 == '\0')
+//		return p1;
+//
+//}
+//
+//int main()
+//{
+//	char* p1 = "abcdef";
+//	char* p2 = "def";
+//	char* ret = my_strstr(p1, p2);
+//
+//	return 0;
+//}
 
 int main()
 {
-	char arr1[] = "abcdefgi";
-	char arr2[] = "bit";
+	char arr[] = "zpw@bitedu.tech";
+	char* p = "@.";
+	
+	char buf[1024] = { 0 };
+	strcpy(buf, arr);
 
-	my_strcpy(arr1, arr2);
-	printf("%s\n", arr1);
+	char* ret = strtok(arr, p);
+	printf("%s\n", ret);
+	ret = strtok(NULL, p);
+	printf("%s\n", ret);
+	ret = strtok(NULL, p);
+	printf("%s\n", ret);
 
 	return 0;
 }
