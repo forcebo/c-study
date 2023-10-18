@@ -358,20 +358,60 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	char arr[] = "zpw@bitedu.tech";
+//	char* p = "@.";
+//
+//	char buf[1024] = { 0 };
+//	strcpy(buf, arr);
+//
+//	char* ret = NULL;
+//	for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p)) // 会创建静态变量，保存之前返回的标记位置
+//	{
+//		printf("%s\n", ret);
+//	}
+//	/*char* ret = strtok(arr, p);
+//	printf("%s\n", ret);
+//	ret = strtok(NULL, p);
+//	printf("%s\n", ret);
+//	ret = strtok(NULL, p);
+//	printf("%s\n", ret);*/
+//
+//	return 0;
+//}
+//#include <errno.h>
+//
+//int main()
+//{
+//	// 0 - No error
+//	// 1 - Operation not permitted
+//	// 2 - No such file or directory
+//	// ...
+//	// errno 是一个全局的错误码的变量
+//	// 当c语言的库函数在执行过程中，发生了错误，就会把对应的错误码，赋值在errno中
+//	/*char* str = strerror(errno);
+//	printf("%s\n", str);*/
+//	
+//	// 打开文件
+//	FILE* pf = fopen("test.txt", "r");
+//	if (pf == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//	}
+//	else
+//	{
+//		printf("open file success\n");
+//	}
+//	return 0;
+//}
+
+#include <ctype.h>
+
 int main()
 {
-	char arr[] = "zpw@bitedu.tech";
-	char* p = "@.";
-	
-	char buf[1024] = { 0 };
-	strcpy(buf, arr);
-
-	char* ret = strtok(arr, p);
-	printf("%s\n", ret);
-	ret = strtok(NULL, p);
-	printf("%s\n", ret);
-	ret = strtok(NULL, p);
-	printf("%s\n", ret);
-
+	char ch = 'w';
+	int ret = islower(ch);
+	printf("%d\n", ret);
 	return 0;
 }
