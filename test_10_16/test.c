@@ -340,23 +340,41 @@
 //	return 0;
 //}
 
-//char* my_strstr(const char* p1, const char* p2)
-//{
-//	assert(p1 != NULL);
-//	assert(p2 != NULL);
-//	if (*p2 == '\0')
-//		return p1;
-//
-//}
-//
-//int main()
-//{
-//	char* p1 = "abcdef";
-//	char* p2 = "def";
-//	char* ret = my_strstr(p1, p2);
-//
-//	return 0;
-//}
+char* my_strstr(const char* p1, const char* p2)
+{
+	assert(p1 != NULL);
+	assert(p2 != NULL);
+	if (*p2 == '\0')
+		return p1;
+	char* cp = p1;
+	char* s1, *s2;
+	while (*cp)
+	{
+		s1 = cp;
+		s2 = (char*)p2;
+		while (*s1 && *s2 && *s1 == *s2)
+		{
+			s1++;
+			s2++;
+		}
+		if (!*s2)
+		{
+			return cp;
+		}
+		cp++;
+	}
+	return NULL;
+}
+
+int main()
+{
+	char* p1 = "abcddef";
+	char* p2 = "def";
+	char* ret = my_strstr(p1, p2);
+	printf("%s", ret);
+
+	return 0;
+}
 
 //int main()
 //{
@@ -406,12 +424,85 @@
 //	return 0;
 //}
 
-#include <ctype.h>
+//#include <ctype.h>
+//
+//int main()
+//{
+//	char ch = 'w';
+//	int ret = islower(ch);
+//	printf("%d\n", ret);
+//	return 0;
+//}
 
-int main()
-{
-	char ch = 'w';
-	int ret = islower(ch);
-	printf("%d\n", ret);
-	return 0;
-}
+//struct S
+//{
+//	char name[20];
+//	int age;
+//};
+//typedef struct S S;
+//
+//// dest 和 src不能有任何的重叠
+//void* my_memcpy(void* dest, const void* src, size_t num) // 拷贝的字节数 - num
+//{
+//	void* ret = dest;
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//	while (num--) {
+//		*(char*)dest = *(char*)src;
+//		++(char*)dest;
+//		++(char*)src;
+//	}
+//	return ret;
+//}
+//
+//// 处理重叠内存的拷贝
+//void* my_memmove(void* dest, const void* src, size_t count)
+//{
+//	void* ret = dest;
+//	assert(dest != NULL);
+//	assert(src != NULL);
+//	if (dest < src)
+//	{
+//		// 由前向后拷贝
+//		while (count--)
+//		{
+//			*(char*)dest = *(char*)src;
+//			++(char*)dest;
+//			++(char*)src;
+//		}
+//	}
+//	else
+//	{
+//		// 由后向前拷贝
+//		while (count--)
+//		{
+//			*((char*)dest + count) = *(((char*)src + count)); 
+//			// (char*)dest + count - 最后一个字节的地址, 然后随着count--，不断往前拷贝
+//		}
+//	}
+//	return ret;
+//}
+
+//int main()
+//{
+//	//int arr1[] = { 1,2,3,4,5 };
+//	//int arr2[5] = { 0 };
+//	//S arr3[] = { {"张三",20},{"李四", 30} };
+//	//S arr4[3] = { 0 };
+//	////memcpy(arr2, arr1, sizeof(arr1));
+//	//memcpy(arr4, arr3, sizeof(arr3));
+//
+//
+//	int arr[] = { 1,2,3,4,5,6,7,8,9 };
+//	my_memmove(arr + 2, arr, 20);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	int arr2[] = { 1,2,5,4,3 };
+//	int ret = memcmp(arr1, arr2, 20);
+//	printf("%d", ret);
+//	return 0;
+//}
