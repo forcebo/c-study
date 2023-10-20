@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+#define maxsize 100
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
@@ -340,64 +340,165 @@
 //	return 0;
 //}
 
-char* my_strstr(const char* p1, const char* p2)
+//char* my_strstr(const char* p1, const char* p2)
+//{
+//	assert(p1 != NULL);
+//	assert(p2 != NULL);
+//	if (*p2 == '\0')
+//		return p1;
+//	char* cp = p1;
+//	char* s1, *s2;
+//	while (*cp)
+//	{
+//		s1 = cp;
+//		s2 = (char*)p2;
+//		while (*s1 && *s2 && *s1 == *s2)
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (!*s2)
+//		{
+//			return cp;
+//		}
+//		cp++;
+//	}
+//	return NULL;
+//}
+
+
+//void NextVal(char T[], int* next) // 求next数组
+//{
+//	int len = strlen(T);
+//	int k = -1;
+//	int j = 0;
+//	next[0] = -1;
+//	while (j < len)
+//	{
+//		if (k == -1 || T[j] == T[k])
+//		{
+//			j++;
+//			k++;
+//			if (T[j] != T[k])
+//			{
+//				next[j] = k;
+//			}
+//			else
+//			{
+//				next[j] = next[k];
+//			}
+//		} 
+//		else
+//		{
+//			k = next[k];
+//		}
+//	}
+//}
+//
+//int KMP(const char S[], const char T[])
+//{
+//	assert(S != NULL);
+//	assert(T != NULL);
+//	int i = 0, j = 0, lenS, lenT;
+//	lenS = strlen(S);
+//	lenT = strlen(T);
+//
+//	int ne[maxsize];
+//	NextVal(T, ne);
+//	while (i < lenS && j < lenT)
+//	{
+//		if (j == -1 || S[i] == T[j])
+//		{
+//			i++;
+//			j++;
+//		}
+//		else
+//		{
+//			j = ne[j];
+//		}
+//		if (j == lenT)
+//		{
+//			return i - j;
+//		}
+//	}
+//	return -1;
+//}
+//
+//int main()
+//{
+//	char* p1 = "abcdedef";
+//	char* p2 = "def";
+//	int ret = KMP(p1, p2);
+//	printf("Position is %d\n", ret);
+//
+//	return 0;
+//}
+
+//inline - 内联函数，为了解决一些频繁的调用的小函数大量消耗空间（栈空间）的问题，它只是一个对编译器的建议，最终是否采用还是看编译器的意思
+// 栈空间就是指放置程序的局部数据的内存空间
+inline int get_pos(unsigned char x)
 {
-	assert(p1 != NULL);
-	assert(p2 != NULL);
-	if (*p2 == '\0')
-		return p1;
-	char* cp = p1;
-	char* s1, *s2;
-	while (*cp)
+	return x % 32;
+}
+
+char* my_strtok(char* s, const char* ct)
+{
+	char* sbegin, * send;
+	static char* ssave = NULL;
+	sbegin = s ? s : ssave; // 如果s为NULL就继续上一次的缓存
+	unsigned char cset[32] = { 0 }; // 用32个unsigned char对每个位进行bool运算可以更节省内存
+	while ((*ct) != '\0') // 更新set
 	{
-		s1 = cp;
-		s2 = (char*)p2;
-		while (*s1 && *s2 && *s1 == *s2)
-		{
-			s1++;
-			s2++;
-		}
-		if (!*s2)
-		{
-			return cp;
-		}
-		cp++;
+		unsigned char t = (unsigned char)*ct++;
+		cset[get_pos(t)] |= 1 << (t / 32); // 映射分隔符
 	}
-	return NULL;
+	// 让sbegin指向不在set中的位置
+	while (*sbegin != '/0' && (cset[get_pos(*sbegin)] & (1 << ((unsigned char)*sbegin / 32))))
+	{
+		++sbegin;
+	}
+	if (*sbegin == '\0')
+	{
+		ssave = NULL;
+		return NULL;
+	}
+	int idx = 0;
+	// 寻找下一个分隔符的位置
+	while (sbegin[idx] != '\0' && !(cset[get_pos(sbegin[idx])] & (1 << ((unsigned char)sbegin[idx]) / 32)))
+	{
+		++idx;
+	}
+	send = sbegin + idx;
+	if (*send != '\0')
+	{
+		*send++ = '\0'; // 画上终止符
+	}
+	ssave = send; // 更新下一次处理的缓存位置
+	return sbegin;
 }
 
 int main()
 {
-	char* p1 = "abcddef";
-	char* p2 = "def";
-	char* ret = my_strstr(p1, p2);
-	printf("%s", ret);
+	char arr[] = "zpw@bitedu.tech";
+	char* p = "@.";
+
+	char buf[1024] = { 0 };
+	strcpy(buf, arr);
+
+	char* ret = NULL;
+	for (ret = my_strtok(arr, p); ret != NULL; ret = my_strtok(NULL, p)) // 会创建静态变量，保存之前返回的标记位置
+	{
+		printf("%s\n", ret);
+	}
+	/*char* ret = strtok(arr, p);
+	printf("%s\n", ret);
+	ret = strtok(NULL, p);
+	printf("%s\n", ret);
+	ret = strtok(NULL, p);
+	printf("%s\n", ret);*/
 
 	return 0;
 }
-
-//int main()
-//{
-//	char arr[] = "zpw@bitedu.tech";
-//	char* p = "@.";
-//
-//	char buf[1024] = { 0 };
-//	strcpy(buf, arr);
-//
-//	char* ret = NULL;
-//	for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p)) // 会创建静态变量，保存之前返回的标记位置
-//	{
-//		printf("%s\n", ret);
-//	}
-//	/*char* ret = strtok(arr, p);
-//	printf("%s\n", ret);
-//	ret = strtok(NULL, p);
-//	printf("%s\n", ret);
-//	ret = strtok(NULL, p);
-//	printf("%s\n", ret);*/
-//
-//	return 0;
-//}
 //#include <errno.h>
 //
 //int main()
