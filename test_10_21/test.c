@@ -92,12 +92,12 @@
 //	return 0;
 //}
 
-struct S
-{
-	int a;
-	char c;
-	double d;
-};
+//struct S
+//{
+//	int a;
+//	char c;
+//	double d;
+//};
 
 //void Init(struct S tmp) // 值传递，不会改变原来的值
 //{
@@ -106,22 +106,58 @@ struct S
 //	tmp.d = 3.14;
 //}
 
-void Init(struct S* s)
-{
-	s->a = 100;
-	s->c = 'w';
-	s->d = 3.14;
-}
+//void Init(struct S* s)
+//{
+//	s->a = 100;
+//	s->c = 'w';
+//	s->d = 3.14;
+//}
+//
+//void print1(struct S* tmp)
+//{
+//	printf("%d %c %lf\n", tmp->a, tmp->c, tmp->d);
+//}
+//
+//int main()
+//{
+//	struct S s = { 0 };
+//	Init(&s);
+//	print1(&s);
+//	return 0;
+//}
 
-void print1(struct S* tmp)
+
+////位段：二进制位 - 可以节省空间
+//struct S
+//{
+//	int a : 2;
+//	int b : 5;
+//	int c : 10;
+//	int d : 30;
+//};
+//// 47bit - 6个字节 * 8 = 48位
+//
+//int main()
+//{
+//	struct S s;
+//	printf("%d\n", sizeof(s)); // 8
+//	return 0;;
+//}
+
+struct S
 {
-	printf("%d %c %lf\n", tmp->a, tmp->c, tmp->d);
-}
+	char a : 3;
+	char b : 4;
+	char c : 5;
+	char d : 4;
+};
 
 int main()
 {
-	struct S s = { 0 };
-	Init(&s);
-	print1(&s);
+	struct S s = {0};
+	s.a = 10;
+	s.b = 20;
+	s.c = 3;
+	s.d = 4;
 	return 0;
 }
