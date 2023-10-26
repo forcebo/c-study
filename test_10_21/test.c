@@ -34,25 +34,94 @@
 //	return 0;
 //}
 
-struct S1
+//struct S1
+//{
+//	char c1;
+//	int a;
+//	char c2;
+//};
+//
+//struct S2
+//{
+//	char c1;
+//	char c2;
+//	int a;
+//};
+//
+//
+//int main()
+//{
+//	struct S1 s1 = { 0 };
+//	printf("%d\n", sizeof(s1)); // 12
+//	struct S2 s2 = { 0 };
+//	printf("%d\n", sizeof(s2)); // 8
+//}
+
+//设置默认对齐数位4
+//#pragma pack(4)
+//struct S
+//{
+//	char c1; //1
+//	// 7
+//	double d; // 8
+//};
+//#pragma pack()
+////取消设置的默认对齐数
+//
+//int main()
+//{
+//	struct S s;
+//	printf("%d\n", sizeof(s));
+//	return 0;
+//}
+
+//#include <stddef.h>
+//
+//struct S
+//{
+//	char c;
+//	int i;
+//	double d;
+//};
+//
+//int main()
+//{
+//	printf("%d\n", offsetof(struct S, c));
+//	printf("%d\n", offsetof(struct S, i));
+//	printf("%d\n", offsetof(struct S, d));
+//	return 0;
+//}
+
+struct S
 {
-	char c1;
 	int a;
-	char c2;
+	char c;
+	double d;
 };
 
-struct S2
-{
-	char c1;
-	char c2;
-	int a;
-};
+//void Init(struct S tmp) // 值传递，不会改变原来的值
+//{
+//	tmp.a = 100;
+//	tmp.c = 'w';
+//	tmp.d = 3.14;
+//}
 
+void Init(struct S* s)
+{
+	s->a = 100;
+	s->c = 'w';
+	s->d = 3.14;
+}
+
+void print1(struct S* tmp)
+{
+	printf("%d %c %lf\n", tmp->a, tmp->c, tmp->d);
+}
 
 int main()
 {
-	struct S1 s1 = { 0 };
-	printf("%d\n", sizeof(s1));
-	struct S2 s2 = { 0 };
-	printf("%d\n", sizeof(s2));
+	struct S s = { 0 };
+	Init(&s);
+	print1(&s);
+	return 0;
 }
