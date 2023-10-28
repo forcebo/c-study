@@ -144,20 +144,144 @@
 //	return 0;;
 //}
 
-struct S
+//struct S
+//{
+//	char a : 3;
+//	char b : 4;
+//	char c : 5;
+//	char d : 4;
+//};
+//
+//int main()
+//{
+//	struct S s = {0};
+//	s.a = 10;
+//	s.b = 20;
+//	s.c = 3;
+//	s.d = 4;
+//	return 0;
+//}
+
+//enum Sex // 一种类型
+//{
+//	//枚举的可能取值 - 常量 - 初始化后就无法修改
+//	MALE = 2,
+//	FEMALE,
+//	SECRET = 8
+//};
+//
+//enum Color
+//{
+//	RED, //0
+//	GREEN, //1
+//	BLUE, //2
+//	BLACK,
+//};
+//
+//int main()
+//{
+//	printf("%d %d %d\n", MALE, FEMALE, SECRET);
+//	printf("%d %d %d\n", RED, GREEN, BLUE);
+//	printf("%d\n", sizeof(enum Color));
+//	return 0;
+//}
+
+//union Un
+//{
+//	char c;
+//	int i;
+//};
+//
+//int main()
+//{
+//	union Un u;
+//	printf("%d\n", sizeof(u)); // 4
+//	printf("%p\n", &(u.c)); //0000000AD6D1FB64
+//	printf("%p\n", &(u.i)); //0000000AD6D1FB64
+//	printf("%p\n", &u); //0000000AD6D1FB64
+//	return 0;
+//}
+
+//int check_sys()
+//{
+//	//返回1表示小端
+//	//返回0表示大端
+//	int a = 1;
+//	return *(char*)&a;
+//}
+
+
+//int check_sys()
+//{
+//	union
+//	{
+//		char c;
+//		int i;
+//	}u;
+//	//返回1表示小端
+//	//返回0表示大端
+//	u.i = 1;
+//	return u.c;
+//}
+//
+//
+//int main()
+//{
+//	if (check_sys() == 1)
+//	{
+//		printf("小端");
+//	} 
+//	else
+//	{
+//		printf("大端");
+//	}
+//	// 低地址-------------------高地址
+//	// ....[][][11][22][33][44][][]... -大端字节序存储模式
+//	// ....[][][44][33][22][11][][]... -小端字节序存储模式
+//	// 大小端字节序问题
+//
+//	return 0;
+//}
+
+//union Un
+//{
+//	char c;
+//	int i;
+//};
+//
+//int main()
+//{
+//	union Un u;
+//	u.i = 0x11223344;
+//	u.c = 1;
+//	printf("%x\n", u.i);
+//	printf("%x\n", u.c);
+//	return 0;
+//}
+
+//enum Sex
+//{
+//	MALE,
+//	FAMALE,
+//	SECRET
+//};
+//
+//int main()
+//{
+//	enum Sex s = MALE;
+//	printf("%d\n", sizeof(s));
+//	return 0;
+//}
+
+union Un
 {
-	char a : 3;
-	char b : 4;
-	char c : 5;
-	char d : 4;
+	int a;
+	char arr[5]; // 对齐数为元素char的对齐数
 };
 
 int main()
 {
-	struct S s = {0};
-	s.a = 10;
-	s.b = 20;
-	s.c = 3;
-	s.d = 4;
+	union Un u;
+	printf("%d\n", sizeof(u)); // 8
 	return 0;
 }
