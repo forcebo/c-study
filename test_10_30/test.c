@@ -255,43 +255,68 @@
 //	return 0;
 //}
 
-struct S
-{
-	int n;
-	int arr[0]; // 未知大小的-柔性数组成员-数组的大小是可以调整的
+//struct S
+//{
+//	int n;
+//	int arr[0]; // 未知大小的-柔性数组成员-数组的大小是可以调整的
+//};
+//
+//int main()
+//{
+//	//struct S s;
+//	//printf("%d\n", sizeof(s)); // 4
+//
+//	struct S* ps = (struct S*)malloc(sizeof(struct S) + 5 * sizeof(int));
+//	if (ps == NULL)
+//	{
+//		return 0;
+//	}
+//	ps->n = 100;
+//	int i = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		ps->arr[i] = i;
+//	}
+//	struct S* ptr = realloc(ps, 44);
+//	if (ptr == NULL)
+//	{
+//		return 0;
+//	}
+//	ps = ptr;
+//	for (i = 5; i < 10; i++)
+//	{
+//		ps->arr[i] = i;
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", ps->arr[i]);
+//	}
+//	free(ps);
+//	ps = NULL;
+//	return 0;
+//}
+
+struct str {
+    int len;
+    char s[0];
 };
 
-int main()
-{
-	//struct S s;
-	//printf("%d\n", sizeof(s)); // 4
+struct foo {
+    struct str* a;
+};
 
-	struct S* ps = (struct S*)malloc(sizeof(struct S) + 5 * sizeof(int));
-	if (ps == NULL)
-	{
-		return 0;
-	}
-	ps->n = 100;
-	int i = 0;
-	for (i = 0; i < 5; i++)
-	{
-		ps->arr[i] = i;
-	}
-	struct S* ptr = realloc(ps, 44);
-	if (ptr == NULL)
-	{
-		return 0;
-	}
-	ps = ptr;
-	for (i = 5; i < 10; i++)
-	{
-		ps->arr[i] = i;
-	}
-	for (i = 0; i < 10; i++)
-	{
-		printf("%d ", ps->arr[i]);
-	}
-	free(ps);
-	ps = NULL;
-	return 0;
+int main() {
+    struct foo f = { 0 };
+    if (f.a->s) {
+        printf("%x\n",f.a->s);
+    }
+
+    char p[5] = "ab";
+    printf("%x\n", p);
+    printf(p);
+
+    char* q = "ab";
+    printf(q);
+    
+    return 0;
 }

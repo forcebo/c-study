@@ -1,2 +1,6 @@
 ﻿  test.c
+D:\vs项目\c进阶\c-study\test_10_30\test.c(311,16): warning C4477: “printf”: 格式字符串“%x”需要类型“unsigned int”的参数，但可变参数 1 拥有了类型“char *”
+D:\vs项目\c进阶\c-study\test_10_30\test.c(311,16): warning C4313: "printf": 格式字符串中的 "%x" 与类型为 "char *" 的参数 1 冲突
+D:\vs项目\c进阶\c-study\test_10_30\test.c(315,12): warning C4477: “printf”: 格式字符串“%x”需要类型“unsigned int”的参数，但可变参数 1 拥有了类型“char *”
+D:\vs项目\c进阶\c-study\test_10_30\test.c(315,12): warning C4313: "printf": 格式字符串中的 "%x" 与类型为 "char *" 的参数 1 冲突
   test_10_30.vcxproj -> D:\vs项目\c进阶\c-study\test_10_30\x64\Debug\test_10_30.exe
