@@ -6,7 +6,19 @@
 #define MAX_TELE 12
 #define MAX_ADDR 30
 
+#include <stdio.h>
+#include <string.h>
 
+enum Option
+{
+	EXIT,
+	ADD,
+	DEL,
+	SEARCH,
+	MODIFY,
+	SHOW,
+	SORT
+};
 
 typedef struct PeoInfo
 {
@@ -24,5 +36,15 @@ typedef struct Contact
 }Contact;
 
 void InitContact(Contact* ps);
+
 void AddContact(Contact* ps);
+
 void ShowContact(const Contact* ps);
+
+void DelContact(Contact* ps);
+
+void SearchContact(const Contact* ps);
+
+void ModifyContact(Contact* ps);
+
+void SortContact(Contact* ps);
