@@ -1,0 +1,5 @@
+﻿  contact.c
+D:\vs项目\c进阶\c-study\Contact\contact.c(152,7): warning C4013: “qsort”未定义；假设外部返回 int
+  test.c
+  正在生成代码...
+  通讯录.vcxproj -> D:\vs项目\c进阶\c-study\Contact\x64\Debug\Contact.exe
