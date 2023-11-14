@@ -1,0 +1,10 @@
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=0
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=1
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=2
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=3
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=4
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=5
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=6
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=7
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=8
+file:D:\vs项目\c进阶\c-study\test_11_9\test.c line53 date:Nov 10 2023 time:19:09:04 i=9
