@@ -212,3 +212,19 @@
 //	}
 //	return 0;
 //}
+
+struct S
+{
+	int a;
+	//char c;
+};
+
+int main()
+{
+	struct S s = { 0 };
+	struct S* p = &s;
+
+	printf("%d\n", sizeof(struct S));
+	printf("%d\n", (&(p->a) - p));
+	printf("%d\n", &((struct S*)0)->a);
+}
